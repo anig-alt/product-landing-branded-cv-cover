@@ -554,6 +554,36 @@ section {
     transition: color 0.3s ease;
 }
 
+/* CVs and Cover Letter Examples Section */
+.gallery {
+    background-color: var(--bg-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
 /* Testimonials Section */
 .testimonials {
     background-color: var(--bg-light);
@@ -1084,6 +1114,7 @@ footer {
 
     .cards-grid,
     .benefits-list,
+    .gallery-grid,
     .testimonials-grid,
     .pricing-grid {
         grid-template-columns: 1fr;
