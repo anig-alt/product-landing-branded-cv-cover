@@ -44,9 +44,7 @@ You can also open `index.html` directly in a browser (some behavior may differ w
 
 ## Live demo
 
-If the repo is deployed (e.g. GitHub Pages):
-
-**https://anig-alt.github.io/product-landing-branded-cv-cover/**
+**https://cv-cover-maker.netlify.app/**
 
 ## Team members
 
