@@ -35,7 +35,7 @@
                     <div class="hero-text">
                         <h1 class="hero-title">Make designs that get your vibe.</h1>
                         <p class="hero-tagline">The AI creative platform for professional documents. Turn your CV into a branded identity with matching cover letters—same fonts, colors, and design style.</p>
-                        <button class="cta-button" onclick="scrollToPricing()">Start creating</button>
+                        <button class="cta-button cta-open-modal">Start creating</button>
                     </div>
                     <div class="hero-visual">
                         <div class="process-showcase">
@@ -104,19 +104,19 @@
                         <div class="card-icon">📄</div>
                         <h3>Upload Your CV</h3>
                         <p>Simply upload your existing CV in PDF or Word format. Our AI analyzes your document's design elements.</p>
-                        <button class="card-button">Get started</button>
+                        <button class="card-button cta-open-modal">Get started</button>
                     </div>
                     <div class="card">
                         <div class="card-icon">🎨</div>
                         <h3>AI Design Analysis</h3>
                         <p>We extract fonts, color palettes, spacing, and layout styles to create your unique brand identity.</p>
-                        <button class="card-button">Get started</button>
+                        <button class="card-button cta-open-modal">Get started</button>
                     </div>
                     <div class="card">
                         <div class="card-icon">✨</div>
                         <h3>Generate Cover Letter</h3>
                         <p>Receive a perfectly matched cover letter with the same professional design, ready to download.</p>
-                        <button class="card-button">Get started</button>
+                        <button class="card-button cta-open-modal">Get started</button>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                             <li>✓ Basic design matching</li>
                             <li>✓ PDF download</li>
                         </ul>
-                        <button class="pricing-button">Get started</button>
+                        <button class="pricing-button cta-open-modal">Get started</button>
                     </div>
                     <div class="pricing-card featured">
                         <div class="popular-badge">Most Popular</div>
@@ -217,7 +217,7 @@
                             <li>✓ Multiple format exports</li>
                             <li>✓ Priority support</li>
                         </ul>
-                        <button class="pricing-button primary">Start creating now</button>
+                        <button class="pricing-button primary cta-open-modal">Start creating now</button>
                     </div>
                 </div>
             </div>
@@ -247,6 +247,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- CTA Modal -->
+    <div class="modal-overlay" id="ctaModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <h2 id="modalTitle">Get Started</h2>
+            <form class="modal-form" id="ctaForm" novalidate>
+                <div>
+                    <label for="modalUsername">Username or Email</label>
+                    <input type="text" id="modalUsername" name="username" required placeholder="Username or email" autocomplete="username">
+                    <span class="field-error" id="usernameError" aria-live="polite"></span>
+                </div>
+                <div>
+                    <label for="modalPassword">Password</label>
+                    <input type="password" id="modalPassword" name="password" required placeholder="Password" autocomplete="current-password">
+                    <span class="field-error" id="passwordError" aria-live="polite"></span>
+                </div>
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
