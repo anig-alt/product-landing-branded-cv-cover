@@ -1,35 +1,54 @@
 # Picsart – Professional CV & Cover Letter Design
 
-A product showcase landing page for Picsart’s AI creative platform: turn your CV into a branded identity with matching cover letters (same fonts, colors, and design style).
+Product showcase landing page for Picsart’s AI platform: turn your CV into a branded identity with matching cover letters.
 
 ## Features
 
-- **Sticky navbar** with smooth scrolling to Features, Benefits, Examples, Testimonials, and Pricing
-- **Active section highlight** in the nav based on scroll position
-- **Gallery** (CV and cover letter examples) with Resume / Cover letter filters and **lightbox** (click image, prev/next, keyboard: arrows + Escape)
-- **CTA login modal** (Get started / Start creating) with username-or-email + password and basic validation
-- **Dark mode toggle** with preference saved in `localStorage`
-- **Responsive layout** and pricing toggle (Monthly / Yearly)
+**v1 (core landing page)**  
+- Hero with headline, tagline, and CTA  
+- Stats section  
+- Features cards (Upload CV, AI Design Analysis, Generate Cover Letter)  
+- Benefits section  
+- Testimonials  
+- Pricing (Free / Pro with Monthly / Yearly toggle)  
+- Footer with links  
 
-## Tech
+**Merged features**  
+- Sticky navbar with smooth scrolling to sections  
+- Active section highlight in the nav  
+- Gallery (CV and cover letter examples) with Resume / Cover letter filters  
+- Lightbox: click image to enlarge; prev/next buttons; keyboard (arrows, Escape)  
+- CTA login modal (username or email + password, validation)  
+- Dark mode toggle (preference saved in `localStorage`)  
+- Responsive layout  
 
-- HTML, CSS, JavaScript (no build step)
-- Fonts: [Gilroy](https://fonts.google.com/) via Google Fonts
+## How to run locally
 
-## Run locally
-
-1. Clone the repo and open the project folder.
-2. Serve the folder (e.g. with Live Server in VS Code, or `npx serve .`).
+1. Clone the repo: `git clone https://github.com/anig-alt/product-landing-branded-cv-cover.git`
+2. Open the project folder and serve it (e.g. **Live Server** in VS Code, or `npx serve .`).
 3. Open the URL in a browser (e.g. `http://localhost:3000`).
 
-Or open `index.html` directly in a browser (some features may behave differently without a local server).
+You can also open `index.html` directly in a browser (some behavior may differ without a server).
 
-## Live preview
+## Repo structure
 
-If the repo uses **GitHub Pages**, the site is available at:
+```
+├── index.html      # Main page markup
+├── style.css       # Styles (including dark theme)
+├── app.js          # Nav, modal, gallery lightbox & filters, pricing toggle, theme
+├── assets/         # Images (CV & cover letter examples)
+├── README.md
+├── .gitignore
+└── PULL_REQUEST*.md
+```
+
+## Live demo
+
+If the repo is deployed (e.g. GitHub Pages):
 
 **https://anig-alt.github.io/product-landing-branded-cv-cover/**
 
-## License
+## Team members
 
-All rights reserved.
+- [anig-alt](https://github.com/anig-alt)  
+- _Add more names or GitHub handles here_
