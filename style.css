@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #FF00FF;
     --primary-dark: #CC00CC;
@@ -130,6 +134,11 @@ header {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+.nav-links a.active {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* Hero Section */
@@ -545,6 +554,154 @@ section {
     transition: color 0.3s ease;
 }
 
+/* CVs and Cover Letter Examples Section */
+.gallery {
+    background-color: var(--bg-white);
+}
+
+.gallery-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text-light);
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: var(--text-dark);
+    border-color: var(--primary-color);
+}
+
+.filter-btn.active {
+    color: white;
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
+/* Gallery Lightbox */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lightbox-prev {
+    left: 1.5rem;
+}
+
+.lightbox-next {
+    right: 1.5rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 /* Testimonials Section */
 .testimonials {
     background-color: var(--bg-light);
@@ -862,6 +1019,123 @@ footer {
     font-size: 0.9rem;
 }
 
+/* CTA Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--bg-white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 440px;
+    width: calc(100% - 2rem);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-open .modal {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--bg-light);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+    background: var(--border-color);
+}
+
+.modal h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.modal-form label {
+    display: block;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.modal-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.2s ease;
+}
+
+.modal-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.modal-form input.error {
+    border-color: #e74c3c;
+}
+
+.modal-form .field-error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+}
+
+.modal-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-form button[type="submit"]:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -958,6 +1232,7 @@ footer {
 
     .cards-grid,
     .benefits-list,
+    .gallery-grid,
     .testimonials-grid,
     .pricing-grid {
         grid-template-columns: 1fr;

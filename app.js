@@ -1,19 +1,10 @@
-// Smooth scroll to pricing section
-function scrollToPricing() {
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Smooth scroll for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Sticky navbar: links scroll to section (smooth scroll is in CSS via html { scroll-behavior: smooth })
     const navLinks = document.querySelectorAll('.nav-links a');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetSection = document.getElementById(targetId);
@@ -23,6 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Active section highlight in navbar
+    const sections = document.querySelectorAll('section[id]');
+    function setActiveNav() {
+        const scrollY = window.scrollY;
+        let current = null;
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollY >= top - 100 && scrollY < top + height - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const id = href && href.startsWith('#') ? href.substring(1) : '';
+            link.classList.toggle('active', id === current);
+        });
+    }
+    window.addEventListener('scroll', setActiveNav);
+    setActiveNav();
 
     // Dark mode toggle functionality
     const themeToggle = document.getElementById('themeToggle');
@@ -76,4 +88,174 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Sync initial display with active toggle (Yearly is active by default in HTML)
     setPricingPeriod('yearly');
+
+    // CTA Modal: open, close (button, backdrop, Escape), form validation
+    const ctaModal = document.getElementById('ctaModal');
+    const modalCloseBtn = document.getElementById('modalClose');
+    const ctaForm = document.getElementById('ctaForm');
+    const modalUsername = document.getElementById('modalUsername');
+    const modalPassword = document.getElementById('modalPassword');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+
+    function openModal() {
+        ctaModal.classList.add('is-open');
+        ctaModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        modalUsername.focus();
+    }
+
+    function closeModal() {
+        ctaModal.classList.remove('is-open');
+        ctaModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        usernameError.textContent = '';
+        passwordError.textContent = '';
+        modalUsername.classList.remove('error');
+        modalPassword.classList.remove('error');
+        ctaForm.reset();
+    }
+
+    document.querySelectorAll('.cta-open-modal').forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    ctaModal.addEventListener('click', function(e) {
+        if (e.target === ctaModal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && ctaModal.classList.contains('is-open')) {
+            closeModal();
+        }
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
+
+    // Gallery lightbox: click image to open, prev/next buttons, Arrow keys, Escape to close
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const gallerySrcs = Array.from(galleryImages).map(img => ({ src: img.src, alt: img.alt }));
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+        lightboxIndex = index;
+        lightboxImage.src = gallerySrcs[index].src;
+        lightboxImage.alt = gallerySrcs[index].alt;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+        lightboxIndex = (lightboxIndex - 1 + gallerySrcs.length) % gallerySrcs.length;
+        lightboxImage.src = gallerySrcs[lightboxIndex].src;
+        lightboxImage.alt = gallerySrcs[lightboxIndex].alt;
+    }
+
+    function showNext() {
+        lightboxIndex = (lightboxIndex + 1) % gallerySrcs.length;
+        lightboxImage.src = gallerySrcs[lightboxIndex].src;
+        lightboxImage.alt = gallerySrcs[lightboxIndex].alt;
+    }
+
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            openLightbox(index);
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            showPrev();
+        }
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            showNext();
+        }
+    });
+
+    // Gallery filter: show/hide items by category (Resume / Cover letter)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function applyFilter(filter) {
+        filterBtns.forEach(btn => {
+            btn.classList.toggle('active', filter !== 'all' && btn.getAttribute('data-filter') === filter);
+        });
+        galleryItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            const show = filter === 'all' || category === filter;
+            item.classList.toggle('hidden', !show);
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            if (this.classList.contains('active')) {
+                applyFilter('all');
+            } else {
+                applyFilter(filter);
+            }
+        });
+    });
+
+    function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    ctaForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        usernameError.textContent = '';
+        passwordError.textContent = '';
+        modalUsername.classList.remove('error');
+        modalPassword.classList.remove('error');
+
+        let valid = true;
+        const usernameVal = (modalUsername.value || '').trim();
+        const passwordVal = (modalPassword.value || '').trim();
+
+        if (!usernameVal) {
+            usernameError.textContent = 'Username or email is required.';
+            modalUsername.classList.add('error');
+            valid = false;
+        } else if (usernameVal.includes('@') && !isValidEmail(usernameVal)) {
+            usernameError.textContent = 'Please enter a valid email address.';
+            modalUsername.classList.add('error');
+            valid = false;
+        }
+        if (!passwordVal) {
+            passwordError.textContent = 'Password is required.';
+            modalPassword.classList.add('error');
+            valid = false;
+        }
+
+        if (valid) {
+            closeModal();
+            // Here you could send the form data to a server
+        }
+    });
 });
