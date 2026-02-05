@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picsart - Professional CV & Cover Letter Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gilroy:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">Picsart</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Make designs that get your vibe.</h1>
+                        <p class="hero-tagline">The AI creative platform for professional documents. Turn your CV into a branded identity with matching cover letters—same fonts, colors, and design style.</p>
+                        <button class="cta-button" onclick="scrollToPricing()">Start creating</button>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="process-showcase">
+                            <div class="documents-row">
+                                <div class="document-preview cv-preview">
+                                    <img src="assets/Resume .png" alt="CV Example" class="document-image">
+                                </div>
+                                <div class="document-preview cover-letter-preview">
+                                    <img src="assets/Cover letter.png" alt="Cover Letter Example" class="document-image">
+                                </div>
+                            </div>
+                            <div class="process-steps">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <div class="step-connector"></div>
+                                        <p class="step-text">Create/upload your CV</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <div class="step-connector"></div>
+                                        <p class="step-text">Generate cover letter based on it</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <p class="step-text">Have your own branding experience</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">professionals trust Picsart</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">cover letters generated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">design match accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Showcase Section -->
+        <section id="features" class="showcase">
+            <div class="container">
+                <h2 class="section-title">What will you create today?</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📄</div>
+                        <h3>Upload Your CV</h3>
+                        <p>Simply upload your existing CV in PDF or Word format. Our AI analyzes your document's design elements.</p>
+                        <button class="card-button">Get started</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>AI Design Analysis</h3>
+                        <p>We extract fonts, color palettes, spacing, and layout styles to create your unique brand identity.</p>
+                        <button class="card-button">Get started</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✨</div>
+                        <h3>Generate Cover Letter</h3>
+                        <p>Receive a perfectly matched cover letter with the same professional design, ready to download.</p>
+                        <button class="card-button">Get started</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <h2 class="section-title">All the tools you need</h2>
+                <p class="section-subtitle">Try pro-level tools that feel natural</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Instant results</h3>
+                        <p>Professional-quality documents in seconds. From CV to branded cover letter faster than you imagined.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>AI-powered creation</h3>
+                        <p>Design matching, style extraction, and more. Cutting-edge AI that understands your professional brand.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💼</div>
+                        <h3>Always fresh</h3>
+                        <p>New templates, design styles, and features added regularly. Stay ahead with the latest professional tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Users Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Picsart saved me so much time! I uploaded my CV and got a perfectly matched cover letter in seconds. The design consistency is incredible."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SM</div>
+                            <div class="author-info">
+                                <h4>Sarah Martinez</h4>
+                                <p>Marketing Professional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"I've been using Picsart for all my job applications. The branded documents help me stand out, and I've received more interview callbacks than ever before."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JD</div>
+                            <div class="author-info">
+                                <h4>James Davis</h4>
+                                <p>Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Find a plan that works for you</h2>
+                <div class="pricing-toggle" role="group" aria-label="Billing period">
+                    <button type="button" class="toggle-label" data-period="monthly" aria-pressed="false">Monthly</button>
+                    <button type="button" class="toggle-label active" data-period="yearly" aria-pressed="true">Yearly</button>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="price-amount">$0</span>
+                            <span class="price-period" data-monthly="/month" data-yearly="/year">/year</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ 1 CV upload</li>
+                            <li>✓ 1 cover letter generation</li>
+                            <li>✓ Basic design matching</li>
+                            <li>✓ PDF download</li>
+                        </ul>
+                        <button class="pricing-button">Get started</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3>Pro</h3>
+                        <div class="price">
+                            <span class="price-amount" data-monthly="$9.99" data-yearly="$99">$99</span>
+                            <span class="price-period" data-monthly="/month" data-yearly="/year">/year</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Unlimited CV uploads</li>
+                            <li>✓ Unlimited cover letters</li>
+                            <li>✓ Advanced design customization</li>
+                            <li>✓ Multiple format exports</li>
+                            <li>✓ Priority support</li>
+                        </ul>
+                        <button class="pricing-button primary">Start creating now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Picsart</h3>
+                    <p>Professional CV and cover letter design standardization tool.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Picsart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
