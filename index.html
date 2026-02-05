@@ -154,16 +154,16 @@
                 <h2 class="section-title">Make your application look professional</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="assets/Resume .png" alt="Resume example">
+                        <img src="assets/Resume .png" alt="Resume example" class="gallery-image">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/Cover letter.png" alt="Cover letter example">
+                        <img src="assets/Cover letter.png" alt="Cover letter example" class="gallery-image">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/Untitled Project.png" alt="CV and cover letter design example">
+                        <img src="assets/Untitled Project.png" alt="CV and cover letter design example" class="gallery-image">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/Untitled Project_2.png" alt="CV and cover letter design example">
+                        <img src="assets/Untitled Project_2.png" alt="CV and cover letter design example" class="gallery-image">
                     </div>
                 </div>
             </div>
@@ -289,6 +289,14 @@
                 <button type="submit">Log in</button>
             </form>
         </div>
+    </div>
+
+    <!-- Gallery Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
+        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        <button type="button" class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+        <button type="button" class="lightbox-next" id="lightboxNext" aria-label="Next image">&#10095;</button>
     </div>
 
     <script src="app.js"></script>

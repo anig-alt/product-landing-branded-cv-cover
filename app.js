@@ -130,6 +130,71 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && ctaModal.classList.contains('is-open')) {
             closeModal();
         }
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
+
+    // Gallery lightbox: click image to open, prev/next buttons, Arrow keys, Escape to close
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const gallerySrcs = Array.from(galleryImages).map(img => ({ src: img.src, alt: img.alt }));
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+        lightboxIndex = index;
+        lightboxImage.src = gallerySrcs[index].src;
+        lightboxImage.alt = gallerySrcs[index].alt;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+        lightboxIndex = (lightboxIndex - 1 + gallerySrcs.length) % gallerySrcs.length;
+        lightboxImage.src = gallerySrcs[lightboxIndex].src;
+        lightboxImage.alt = gallerySrcs[lightboxIndex].alt;
+    }
+
+    function showNext() {
+        lightboxIndex = (lightboxIndex + 1) % gallerySrcs.length;
+        lightboxImage.src = gallerySrcs[lightboxIndex].src;
+        lightboxImage.alt = gallerySrcs[lightboxIndex].alt;
+    }
+
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            openLightbox(index);
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            showPrev();
+        }
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            showNext();
+        }
     });
 
     function isValidEmail(value) {
