@@ -48,5 +48,4 @@ You can also open `index.html` directly in a browser (some behavior may differ w
 
 ## Team members
 
-- [anig-alt](https://github.com/anig-alt)  
-- _Add more names or GitHub handles here_
+- [anig-alt](https://github.com/anig-alt)
