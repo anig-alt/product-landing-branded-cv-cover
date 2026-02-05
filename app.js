@@ -197,6 +197,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Gallery filter: show/hide items by category (Resume / Cover letter)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function applyFilter(filter) {
+        filterBtns.forEach(btn => {
+            btn.classList.toggle('active', filter !== 'all' && btn.getAttribute('data-filter') === filter);
+        });
+        galleryItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            const show = filter === 'all' || category === filter;
+            item.classList.toggle('hidden', !show);
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            if (this.classList.contains('active')) {
+                applyFilter('all');
+            } else {
+                applyFilter(filter);
+            }
+        });
+    });
+
     function isValidEmail(value) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
